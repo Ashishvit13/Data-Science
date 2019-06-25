@@ -1,8 +1,0 @@
-Steps to Implement Decision Tree Algorithm from Scratch for Classification:
-
-Four Rules that needs to be incorporated in implementation of Decision Trees.
-1. How do we take decisions or make predictions?
-	(Probability: Proportions in the terminal nodes, Hard Classes: Simple Majority Vote, Cutoff on Probablility Score)
-2. What questions need to ask at node or where do these rules come from? (Based on Data sets)
-3. When we split nodes or how do we pick rules for splitting at each node.?(Measure homogenity: gini index, entropy & deviance)
-4. When do we stop splitting nodes? (node homogenity achieved, no of observation in the nodes are lower than the specified limit for split, When no of specified leaf node is reached)
