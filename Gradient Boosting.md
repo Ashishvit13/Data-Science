@@ -20,16 +20,18 @@ There's a trade off between the learning rate and the number of estimators (tree
 
   <img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/8f0b5f85-c938-49b4-85e1-81a388858d1f" />
 
-  **3. Shrinkage:** After each tree is trained its predictions are shrunk by multiplying them with the learning rate η which ranges from 0 to 1. This prevents overfitting by ensuring each tree has a smaller impact on the final model.
   
-  Once all trees are trained predictions are made by summing the contributions of all the trees. The final prediction is given by the formula:
+  **3. Shrinkage:** After each tree is trained its predictions are shrunk by multiplying them with the learning rate η which ranges from 0 to 1. This prevents overfitting by ensuring each tree has a smaller impact on the final model.
+
+Once all trees are trained predictions are made by summing the contributions of all the trees. The final prediction is given by the formula:
   
 <img width="472" height="85" alt="image" src="https://github.com/user-attachments/assets/db60b5d4-4165-4347-83f5-cf899ae1cd5c" />
+<br>
 
 ## **Difference between Adaboost and Gradient Boosting**
 Lets see difference between AdaBoost and gradient boosting which are as follows:
 
-<img width="571" height="443" alt="image" src="https://github.com/user-attachments/assets/cffff6d4-f756-4d09-a140-52b8a9c05332" />
+<img width="650" height="500" alt="image" src="https://github.com/user-attachments/assets/cffff6d4-f756-4d09-a140-52b8a9c05332" />
 
 ## **Implementing Gradient Boosting for Classification and Regression**
 Here are two examples to demonstrate how Gradient Boosting works for both classification and regression. But before that let's understand gradient boosting parameters.
@@ -76,6 +78,7 @@ We use Gradient Boosting Classifier to predict digits from Digits dataset.
         print("Gradient Boosting Classifier accuracy is : {:.2f}".format(acc))
 **Output:**
 Gradient Boosting Classifier accuracy is : 0.98
+<br>
 
 **Example 2: Regression**
 We use Gradient Boosting Regressor on the Diabetes dataset to predict continuous values:
