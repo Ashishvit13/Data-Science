@@ -36,6 +36,7 @@ The objective function in XGBoost consists of two parts i.e a loss function and 
 XGBoost extends traditional gradient boosting by including regularization elements in the objective function, XGBoost improves generalization and prevents overfitting.
 
 **1. Preventing Overfitting**
+
 XGBoost incorporates several techniques to reduce overfitting and improve model generalization:
 
   - Learning rate (eta): Controls each tree’s contribution i.e a lower value makes the model more conservative.
@@ -44,6 +45,7 @@ XGBoost incorporates several techniques to reduce overfitting and improve model 
   - Combination effect: Using learning rate, regularization and pruning together enhances robustness and reduces overfitting.
 
 **2. Tree Structure**
+
 XGBoost builds trees level-wise (breadth-first) rather than the conventional depth-first approach, adding nodes at each depth before moving to the next level.
 
   - Best splits: Evaluates every possible split for each feature at each level and selects the one that minimizes the objective function like MSE for regression and cross-entropy for classification.
@@ -51,6 +53,7 @@ XGBoost builds trees level-wise (breadth-first) rather than the conventional dep
   - Benefit: Handles complex feature interactions effectively by considering all features at the same depth.
 
 **3. Handling Missing Data**
+
 XGBoost manages missing values robustly during training and prediction using a sparsity-aware approach.
 
   - Sparsity-Aware Split Finding: Treats missing values as a separate category when evaluating splits.
@@ -59,6 +62,7 @@ XGBoost manages missing values robustly during training and prediction using a s
   - Benefit: Ensures robust predictions even with incomplete input data.
 
 **4. Cache-Aware Access**
+
 XGBoost optimizes memory usage to speed up computations by taking advantage of CPU cache.
 
   - Memory hierarchy: Frequently accessed data is stored in the CPU cache.
@@ -66,21 +70,24 @@ XGBoost optimizes memory usage to speed up computations by taking advantage of C
   - Benefit: Reduces reliance on slower main memory, improving training speed.
 
 **5. Approximate Greedy Algorithm**
+
 To efficiently handle large datasets, XGBoost uses an approximate method to find optimal splits.
 
   - Weighted quantiles: Quickly estimate the best split without checking every possibility.
   - Efficiency: Reduces computational overhead while maintaining accuracy.
   - Benefit: Ideal for large datasets where full evaluation is costly.
 
-**Implementation**
+## **Implementation**
+
 Here we implement XGBoost using Python and the Scikit-learn compatible API to train, predict and evaluate a classification model.
 
 **Step 1: Import Required Libraries**
-Import required libraries like:
 
-  - Pandas and NumPy for data manipulation
-  - Matplotlib and Seaborn for visualization
-  - XGBoost with Scikit-learn utilities are used to build and evaluate the classification model
+Import required libraries like.
+
+  - Pandas and NumPy for data manipulation.
+  - Matplotlib and Seaborn for visualization.
+  - XGBoost with Scikit-learn utilities are used to build and evaluate the classification model.
 
         import pandas as pd
         import numpy as np
@@ -96,22 +103,25 @@ Import required libraries like:
         sns.set_style("whitegrid")
 
 **Step 2: Load and View the Dataset**
+
 Here, we load the dataset using Pandas and display the first 5 rows to understand its structure, features and sample values.
 
         df = pd.read_csv("/content/Wholesale customers data.csv")
         df.head()
 
-<img width="616" height="198" alt="image" src="https://github.com/user-attachments/assets/745c844c-6175-46d8-9f47-b367218f32ae" />
+<img width="616" height="198" alt="image" src="https://github.com/user-attachments/assets/745c844c-6175-46d8-9f47-b367218f32ae" /><br>
 
 **Step 3: Explore Statistical Summary of the Data**
+
 In this step, we use describe() to view key statistics of the dataset which helps in understanding data distribution and spotting anomalies.
 
         print("\nStatistical Summary")
         display(df.describe())
 
-<img width="897" height="305" alt="image" src="https://github.com/user-attachments/assets/2b1ffc4b-29b2-480e-ba43-346523ed0179" />
+<img width="897" height="305" alt="image" src="https://github.com/user-attachments/assets/2b1ffc4b-29b2-480e-ba43-346523ed0179" /><br>
 
 **Step 4: Prepare Features and Target, Split Data**
+
 Here, we separate the dataset into features (X) and target labels (y), convert the target into binary format and split the data into training and testing sets for model training and evaluation.
 
         X = df.drop('Channel', axis=1)
@@ -121,6 +131,7 @@ Here, we separate the dataset into features (X) and target labels (y), convert t
         )
 
 **Step 5: Build and Train the XGBoost Model**
+
 Here we initialize the XGBoost classifier with specified hyperparameters, train it on the training data and make predictions on the test set.
 
   - Defines the learning objective, tree depth, learning rate, number of trees and regularization to control overfitting.
@@ -128,6 +139,7 @@ Here we initialize the XGBoost classifier with specified hyperparameters, train 
   - Uses the trained model to predict target labels on the test set (X_test).
 
 **Step 6: Evaluate Model Accuracy and Performance**
+
 In this step, we measure how well the XGBoost model performs on the test set using accuracy and a detailed classification report.
 
         accuracy = accuracy_score(y_test, y_pred)
@@ -136,9 +148,11 @@ In this step, we measure how well the XGBoost model performs on the test set usi
         print("\nClassification Report")
         print(classification_report(y_test, y_pred))
 
-<img width="441" height="211" alt="image" src="https://github.com/user-attachments/assets/7eb032f7-600d-46cd-a6bf-1c5e171933fb" />
+<img width="441" height="211" alt="image" src="https://github.com/user-attachments/assets/7eb032f7-600d-46cd-a6bf-1c5e171933fb" /><br>
+
 
 **Step 7: Plot Confusion Matrix Heatmap**
+
 Visualizes the model’s confusion matrix using a heatmap, helping to quickly identify correct and incorrect predictions.
 
         plt.figure(figsize=(5,4))
@@ -149,9 +163,11 @@ Visualizes the model’s confusion matrix using a heatmap, helping to quickly id
         plt.ylabel("Actual")
         plt.show()
 
-<img width="435" height="396" alt="image" src="https://github.com/user-attachments/assets/a9d595cf-35fb-43da-a00b-c44bdfeceda7" />
+<img width="435" height="396" alt="image" src="https://github.com/user-attachments/assets/a9d595cf-35fb-43da-a00b-c44bdfeceda7" /><br>
+
 
 **Step 8: Plot Feature Importance**
+
 Here we visualize the importance of each feature in the XGBoost model to understand which variables contribute most to predictions.
 
 
@@ -160,18 +176,22 @@ Here we visualize the importance of each feature in the XGBoost model to underst
         plt.title("Feature Importance")
         plt.show()
 
-<img width="656" height="440" alt="image" src="https://github.com/user-attachments/assets/02394fc4-94d5-4111-89ea-736469ce0f5a" />
+<img width="656" height="440" alt="image" src="https://github.com/user-attachments/assets/02394fc4-94d5-4111-89ea-736469ce0f5a" /><br>
+
 
 **Step 9: Visualize XGBoost Decision Tree**
+
 Plots one of the trained XGBoost decision trees to help understand how the model makes predictions based on feature splits.
 
         plt.figure(figsize=(20,10))
         xgb.plot_tree(model, num_trees=0)
         plt.show()
 
-<img width="527" height="297" alt="image" src="https://github.com/user-attachments/assets/b6ccddb1-0b5b-4aae-b0cd-83d3850cf7dc" />
+<img width="527" height="297" alt="image" src="https://github.com/user-attachments/assets/b6ccddb1-0b5b-4aae-b0cd-83d3850cf7dc" /><br>
+
 
 **Advantages**
+
 XGBoost includes several features and characteristics that make it useful in many scenarios:
 
   - Scalable for large datasets with millions of records.
@@ -180,7 +200,9 @@ XGBoost includes several features and characteristics that make it useful in man
   - Includes feature importance analysis for better insights.
   - Available across multiple programming languages and widely used by data scientists.
 
+
 **Disadvantages**
+
 XGBoost also has certain aspects that require caution or consideration:
 
   - Computationally intensive; may not be suitable for resource-limited systems.
