@@ -209,3 +209,6 @@ XGBoost also has certain aspects that require caution or consideration:
   - Sensitive to noise and outliers; careful preprocessing required.
   - Can overfit, especially on small datasets or with too many trees.
   - Limited interpretability compared to simpler models, which can be a concern in fields like healthcare or finance.
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/07e23d03-9423-48f2-b064-7f1a7316b94f" />
+
